@@ -8,7 +8,6 @@ import {
 } from 'typeorm';
 
 import OrdersProducts from '@modules/orders/infra/typeorm/entities/OrdersProducts';
-import { EntityListenerMetadata } from 'typeorm/metadata/EntityListenerMetadata';
 
 @Entity('products')
 class Product {
@@ -21,10 +20,10 @@ class Product {
   @Column('decimal')
   price: number;
 
-  @Column('decimal')
+  @Column('int')
   quantity: number;
 
-  @OneToMany(() => OrdersProducts, ordersProducts => ordersProducts.product)
+  @OneToMany(() => OrdersProducts, orders_roducts => orders_roducts.product)
   order_products: OrdersProducts[];
 
   @CreateDateColumn()
